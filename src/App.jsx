@@ -14,7 +14,7 @@ function App() {
         {list.length > 0 && (
           <>
             <CardList list={list} title="Ingredients on hand" headingFontSize="text-3xl" listType="list-disc"/>
-            <RecipeRequestCard list={list} />
+            <RecipeRequestCard />
             
           </>
         )}
