@@ -2,7 +2,7 @@ import { useState } from "react";
 import CardList from "./components/CardList";
 import Form from "./components/Form";
 import Navbar from "./components/Navbar";
-import RecipeRequestCard from "./components/recipeRequestCard";
+// import RecipeRequestCard from "./components/recipeRequestCard";
 
 function App() {
   const [list, setList] = useState([]);
