@@ -1,10 +1,16 @@
-import Navbar from "./components/Navbar"
+import Form from "./components/Form";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-   
-    <Navbar/>
-  )
+    <>
+      <Navbar />
+      <main className="max-w-sm mx-auto p-5 sm:max-w-3xl">
+        <Form/>
+      </main>
+      
+    </>
+  );
 }
 
-export default App
+export default App;
