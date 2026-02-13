@@ -2,7 +2,7 @@ import { useState } from "react";
 import CardList from "./components/CardList";
 import Form from "./components/Form";
 import Navbar from "./components/Navbar";
-// import RecipeRequestCard from "./components/recipeRequestCard";
+import RecipeBuilder from "./components/RecipeBuilder";
 
 function App() {
   const [list, setList] = useState([]);
@@ -13,9 +13,13 @@ function App() {
         <Form setList={setList} />
         {list.length > 0 && (
           <>
-            <CardList list={list} title="Ingredients on hand" headingFontSize="text-3xl" listType="list-disc"/>
-            <RecipeRequestCard />
-            
+            <CardList
+              list={list}
+              title="Ingredients on hand"
+              headingFontSize="text-3xl"
+              listType="list-disc"
+            />
+            <RecipeBuilder />
           </>
         )}
       </main>
