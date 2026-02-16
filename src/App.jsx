@@ -11,17 +11,16 @@ function App() {
       <Navbar />
       <main className="max-w-sm mx-auto p-5 sm:max-w-3xl space-y-5">
         <AddIngredient setList={setList} />
-        {list.length > 3 && (
-          <>
-            <CardList
-              list={list}
-              title="Ingredients on hand"
-              headingFontSize="text-3xl"
-              listType="list-disc"
-            />
-            <RecipeBuilder />
-          </>
+        {list.length > 0 && (
+          <CardList
+            list={list}
+            title="Ingredients on hand"
+            headingFontSize="text-3xl"
+            listType="list-disc"
+          />
         )}
+
+        {list.length > 3 && <RecipeBuilder />}
       </main>
     </>
   );
