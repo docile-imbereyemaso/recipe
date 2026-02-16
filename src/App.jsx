@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CardList from "./components/CardList";
-import Form from "./components/Form";
+import AddIngredient from "./components/IngredientForm";
 import Navbar from "./components/Navbar";
 import RecipeBuilder from "./components/RecipeBuilder";
 
@@ -10,8 +10,8 @@ function App() {
     <>
       <Navbar />
       <main className="max-w-sm mx-auto p-5 sm:max-w-3xl space-y-5">
-        <Form setList={setList} />
-        {list.length > 0 && (
+        <AddIngredient setList={setList} />
+        {list.length > 3 && (
           <>
             <CardList
               list={list}
