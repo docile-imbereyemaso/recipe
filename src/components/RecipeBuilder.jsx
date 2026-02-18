@@ -1,7 +1,5 @@
-import React from "react";
-
 const RecipeBuilder = (props) => {
-  const { handleIsShown,getRecipeMarkdown } = props;
+  const { getRecipeMarkdown } = props;
   return (
     <div className="flex justify-between items-center bg-zinc-200 p-5 rounded-md">
       <div className="space-y-3">

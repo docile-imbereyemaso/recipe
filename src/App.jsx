@@ -7,16 +7,22 @@ import RecipeContainer from "./components/RecipeContainer";
 import { getRecipeFromMistral } from "./ai";
 function App() {
   const [list, setList] = useState([]);
-  const[isShown,setIsShown] = useState(false);
-  async function getRecipeMarkdown(){
+  const [recipe, setRecipe] = useState("");
+  const [loading, setLoading] = useState(false);
+  async function getRecipeMarkdown() {
     try {
-      const recipeMarkdown  = await getRecipeFromMistral(list);
-      console.log(recipeMarkdown);
+      setRecipe("");
+      setLoading(true);
+      const recipeMarkdown = await getRecipeFromMistral(list);
+      setRecipe(recipeMarkdown);
+      setList([])
     } catch (error) {
-      console.log(error);
+      console.error("Failed to fetch ", error.message);
+    } finally {
+      setLoading(false);
     }
   }
-  const handleIsShown =()=>setIsShown(prevShown=>!prevShown)
+
   return (
     <>
       <Navbar />
@@ -31,8 +37,15 @@ function App() {
           />
         ) : null}
 
-        {list.length > 3 && <RecipeBuilder handleIsShown={handleIsShown} getRecipeMarkdown={getRecipeMarkdown}/>}
-        {isShown && <RecipeContainer/>}
+        {list.length > 3 && (
+          <RecipeBuilder getRecipeMarkdown={getRecipeMarkdown} />
+        )}
+        {loading && (
+          <div class="flex items-center justify-center">
+            <div class="h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-600 border-t-transparent"></div>
+          </div>
+        )}
+        {recipe && <RecipeContainer recipe={recipe} />}
       </main>
     </>
   );
