@@ -27,7 +27,7 @@ function App() {
     <>
       <Navbar />
       <main className="max-w-sm mx-auto p-5 sm:max-w-3xl space-y-5">
-        <AddIngredient setList={setList} />
+        <AddIngredient setList={setList} setRecipe={setRecipe} />
         {list.length ? (
           <CardList
             list={list}

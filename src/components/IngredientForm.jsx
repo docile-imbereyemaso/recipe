@@ -1,6 +1,7 @@
 const IngredientForm = (props) => {
-  const { setList } = props;
+  const { setList,setRecipe } = props;
   const handleSubmissionUpdated = (FormData) => {
+     setRecipe("")
     const ingredient = FormData.get("ingredient");
     if (ingredient !== "") {
       setList((prevIngredient) => [...prevIngredient, ingredient]);
