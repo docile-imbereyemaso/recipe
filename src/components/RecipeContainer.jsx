@@ -1,5 +1,4 @@
 import ReactMarkdown from "react-markdown";
-import React from "react";
 const RecipeContainer = ({ recipe }) => {
   return (
     <section className="suggested-recipe-container" aria-live="polite">

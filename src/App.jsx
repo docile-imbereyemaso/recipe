@@ -1,21 +1,26 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CardList from "./components/CardList";
 import AddIngredient from "./components/IngredientForm";
 import Navbar from "./components/Navbar";
 import RecipeBuilder from "./components/RecipeBuilder";
 import RecipeContainer from "./components/RecipeContainer";
-import { getRecipeFromMistral } from "./ai";
+import { getRecipeFromMistral } from "./api/ai";
 function App() {
   const [list, setList] = useState([]);
   const [recipe, setRecipe] = useState("");
   const [loading, setLoading] = useState(false);
+  const recipeSection = useRef(null);
+  useEffect(() => {
+    if (recipe !== "" && recipeSection.current !== null) {
+      recipeSection.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [recipe]);
   async function getRecipeMarkdown() {
     try {
       setRecipe("");
       setLoading(true);
       const recipeMarkdown = await getRecipeFromMistral(list);
       setRecipe(recipeMarkdown);
-      setList([])
     } catch (error) {
       console.error("Failed to fetch ", error.message);
     } finally {
@@ -38,7 +43,10 @@ function App() {
         ) : null}
 
         {list.length > 3 && (
-          <RecipeBuilder getRecipeMarkdown={getRecipeMarkdown} />
+          <RecipeBuilder
+            getRecipeMarkdown={getRecipeMarkdown}
+            ref={recipeSection}
+          />
         )}
         {loading && (
           <div class="flex items-center justify-center">

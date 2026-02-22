@@ -1,8 +1,8 @@
 const RecipeBuilder = (props) => {
-  const { getRecipeMarkdown } = props;
+  const { getRecipeMarkdown, ref } = props;
   return (
     <div className="flex justify-between items-center bg-zinc-200 p-5 rounded-md">
-      <div className="space-y-3">
+      <div ref={ref} className="space-y-3">
         <h1 className="text-xl font-semibold">Ready for a recipe?</h1>
         <p className="text-gray-600 tracking-tight f">
           Generate a recipe from your list of ingredients
